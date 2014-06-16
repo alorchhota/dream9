@@ -10,6 +10,10 @@ processedData <- merge(x=blRawData, y=m24RawData, by='PTID', all=T, suffixes=c('
 processedData <- processedData[,c("PTID", "RID.bl", "EXAMDATE.bl", "EXAMDATE.m24", "DX.bl.bl", "AGE.bl", "PTGENDER.bl", "PTEDUCAT.bl", "APOE4.bl", "MMSE.bl", "MMSE.m24")]
 names(processedData) <- c("PTID", "RID", "EXAMDATE.bl", "EXAMDATE.m24", "DX.bl", "AGE", "PTGENDER", "PTEDUCAT", "APOE4", "MMSE.bl", "MMSE.m24")
 
+# save processed data
+processedDataFile <- 'data/processed/AD-processed.txt'
+write.table(x=processedData, file=processedDataFile, quote=F, sep=',', row.names=F, col.names=T)
+
 
 ## see RAW MMSE patterns and its relation with APOE4.
 par(mfrow=c(2,2))
